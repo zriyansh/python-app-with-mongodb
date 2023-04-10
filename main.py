@@ -8,22 +8,23 @@ from pymongo import MongoClient, errors
 
 load_dotenv()
 
-DOMAIN = os.getenv("DOMAIN")
+# DOMAIN = os.getenv("DOMAIN")
 
 # global variables for MongoDB host (default port is 27017)
 # DOMAIN = '72.17.0.2'
 # DOMAIN = '10.0.41.209'
-PORT = 27017
+# PORT = 27017
 
 # use a try-except indentation to catch MongoClient() errors
 try:
     # try to instantiate a client instance
     client = MongoClient(
-        host = [ str(DOMAIN) + ":" + str(PORT) ],
+        host = os.getenv('DOMAIN') ,
         serverSelectionTimeoutMS = 3000, # 3 second timeout
-        username = "objectrocket",
-        password = "1234",
-        # password = "WPesOBOB3P",
+        # username = "objectrocket",
+        username = os.getenv('MONGO_INITDB_ROOT_USERNAME'),
+        # password = "1234",
+        password = os.getenv('MONGO_INITDB_ROOT_PASSWORD') ,
     )
 
     # print the version of MongoDB server if connection successful

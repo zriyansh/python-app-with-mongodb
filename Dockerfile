@@ -5,6 +5,8 @@ RUN pip3 install python-dotenv
 
 WORKDIR /app
 
+EXPOSE 8080
+
 COPY *.py ./
 
 CMD [ "python", "./main.py"]
